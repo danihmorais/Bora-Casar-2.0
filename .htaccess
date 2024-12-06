@@ -1,0 +1,26 @@
+# Reescrita de URLs
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.php$
+RewriteRule ^(.*)$ $1.php [L,QSA]
+
+# Desativar listagem de diretórios
+Options -Indexes
+
+# Bloqueio de arquivos sensíveis
+<Files "conecta.php">
+    Require all denied
+</Files>
+<Files ".htaccess">
+    Require all denied
+</Files>
+
+# Página inicial
+DirectoryIndex index2.php
+
+# Configuração de cache para imagens
+<FilesMatch "\.(jpg|jpeg)$">
+    Header set Cache-Control "public, max-age=86400"
+    Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+</FilesMatch>
