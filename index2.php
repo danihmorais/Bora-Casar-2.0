@@ -193,6 +193,8 @@ if (!$infos || !isset($infos['video']) || empty($infos['video']) || !file_exists
             // Se foi redirecionado de index2, exibe o vídeo sem verificar se foi assistido
             if (isRedirected) {
                 content.style.display = "block";  // Exibe o conteúdo
+                video.play();
+                    video.currentTime = 0.5;
                 video.pause();
 
                 playBtn.addEventListener("click", function () {
@@ -218,6 +220,8 @@ if (!$infos || !isset($infos['video']) || empty($infos['video']) || !file_exists
                 // Verifica se o vídeo foi assistido ou não
                 if (!videoVisto || videoAssistido !== currentVideo) {
                     content.style.display = "block";  // Exibe o conteúdo
+                    video.play();
+                    video.currentTime = 0.5; // Reinicia o vídeo
                     video.pause();  // Pausa o vídeo de introdução
 
                     playBtn.style.display = "block"; // O botão Play deve ser visível
@@ -234,6 +238,18 @@ if (!$infos || !isset($infos['video']) || empty($infos['video']) || !file_exists
                         localStorage.setItem("videoAssistido", currentVideo);
                         actionButtons.style.display = "block"; // Mostra os botões
                     });
+                    
+                    btnReproduzir.addEventListener("click", function () {
+                    video.currentTime = 0; // Reinicia o vídeo
+                    video.play(); // Reproduz o vídeo novamente
+                    actionButtons.style.display = "none"; // Esconde os botões
+                    });
+
+                    btnProsseguir.addEventListener("click", function () {
+                    window.location.href = "index"; // Redireciona para a página principal
+                    });
+
+                    
                 } else {
                     // Se o vídeo já foi visto, redireciona diretamente para index
                     window.location.href = "index";
