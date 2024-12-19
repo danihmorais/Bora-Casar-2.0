@@ -6,24 +6,25 @@ require_once 'conecta.php';
 require_once 'banco-meusite.php';
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
-    $pix_img_id = $_GET['id'];
+    $video_id = $_GET['id'];
     $infos = listaMeusite($conexao);
     
-    if ($infos && $infos['pix_img'] == $pix_img_id) {
-        $pix_path = "upload/" . basename($infos['pix_img']); // Diretório
+    if ($infos && $infos['video'] == $video_id) {
+        $video_path = "upload/videos/" . basename($infos['video']); // Diretório do vídeo
 
         // Verifica se o arquivo existe antes de tentar excluí-lo
-        if (file_exists($pix_path)) {
-            if (unlink($pix_path)) {
+        if (file_exists($video_path)) {
+            if (unlink($video_path)) {
                 if (excluiVideo($conexao, 1)) { 
-                    header("Location: personalizar-secao-presentes");
+                    header("Location: personalizar-video");
                     exit();
                 }
             } else {
-                echo "Erro ao tentar excluir.";
+                echo "Erro ao tentar excluir o vídeo.";
             }
         }
     }
 } else {
+    echo "Erro: Nenhum vídeo foi enviado na URL.";
 }
 ?>
