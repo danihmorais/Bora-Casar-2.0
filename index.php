@@ -103,14 +103,14 @@ https://github.com/BlackrockDigital/startbootstrap-agency/blob/gh-pages/LICENSE
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#fotos">Fotos</a>
             </li> 
-            <?php
-// Verifica se a variável $infos['video'] existe e se o arquivo existe no diretório de uploads
-if (isset($infos['video']) && file_exists('upload/videos/' . $infos['video'])):
-?>
+            
+            <?php if (isset($infos['video']) && !empty($infos['video']) && file_exists('upload/videos/' . $infos['video'])): ?>
     <li class="nav-item">
         <a class="nav-link js-scroll-trigger" href="index2?from_index=true">Reproduzir vídeo inicial</a>
     </li>
 <?php endif; ?>
+
+            
           <li class="nav-item">
               
               <a class="nav-link js-scroll-trigger" href="admin" style="display: inline-flex; align-items: center; justify-content: center;">
