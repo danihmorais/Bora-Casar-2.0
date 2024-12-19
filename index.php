@@ -844,19 +844,22 @@ $(document).ready(function(){
 
 <?php if (isset($infos['video'])): ?>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const currentVideo = "<?= $infos['video'] ?>"; // O nome do vídeo atual a ser comparado
+document.addEventListener("DOMContentLoaded", function () {
+    const currentVideo = "<?= $infos['video'] ?>";
+    
+    // Verifica se o valor de 'video' não é vazio ou inválido
+    if (currentVideo.trim() !== "") {
+        const videoVisto = localStorage.getItem("videoVisto");
+        const videoAssistido = localStorage.getItem("videoAssistido");
 
-            // Verifica no Local Storage se o vídeo já foi visto
-            const videoVisto = localStorage.getItem("videoVisto");
-            const videoAssistido = localStorage.getItem("videoAssistido");
+        // Verifica se o vídeo ainda não foi visto ou se o vídeo assistido é diferente do atual
+        if (!videoVisto || videoAssistido !== currentVideo) {
+            localStorage.setItem("videoVisto", true);
+            window.location.href = "index2?from_index=true"; // Redireciona para evitar loop
+        }
+    }
+});
 
-            // Se o vídeo ainda não foi visto ou se o vídeo que o usuário viu é diferente do atual
-            if (!videoVisto || videoAssistido !== currentVideo) {
-                // Se o vídeo não foi visto, redireciona para index2.php
-                window.location.href = "index2";
-            }
-        });
     </script>
 <?php endif; ?>
 
