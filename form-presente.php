@@ -195,4 +195,26 @@ $(document).ready(function(){
 
   </body>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+   var textareas = document.querySelectorAll("textarea.form-control");
+
+   // Função para ajustar a altura
+   function adjustHeight(txtarea) {
+      txtarea.style.height = 'auto'; // Reseta a altura antes de calcular a nova
+      txtarea.style.height = txtarea.scrollHeight + 'px';
+   }
+
+   // Ajusta a altura sempre que o conteúdo mudar
+   textareas.forEach(function(txtarea) {
+      txtarea.addEventListener('input', function() {
+         adjustHeight(txtarea);
+      });
+
+      // Ajusta a altura no carregamento inicial
+      adjustHeight(txtarea);
+   });
+});
+</script>
+
 </html>
