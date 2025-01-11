@@ -98,7 +98,7 @@ DROP TABLE IF EXISTS `lista_presentes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lista_presentes` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `titulo` text COLLATE utf8mb4_general_ci DEFAULT NULL,
   `valor` decimal(28,0) DEFAULT NULL,
   `link` text COLLATE utf8mb4_general_ci,
