@@ -13,14 +13,14 @@ $infos = listaMeusite($conexao);
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dados do Noivo
+        Dados da Noivo
         <small>edite os dados do seu site</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
         <li>Personalizar Página</li>
         <li>Seção de Boas Vindas</li>
-        <li class="active">Dados do Noivo</li>
+        <li class="active">Dados da Noivo</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -31,7 +31,7 @@ $infos = listaMeusite($conexao);
         <!-- Cabecalho -->
         <div class="box">
           <div class="box-header with-border">
-            <h3 class="box-title">Insira as informações do noivo:</h3>
+            <h3 class="box-title">Insira as informações da noivo:</h3>
             <!-- tools box -->
             <div class="pull-right box-tools">
               <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
@@ -76,23 +76,26 @@ $infos = listaMeusite($conexao);
                     </div>
                 </div>
 
+
                 <div class="row">
     <div class="col-md-12">
         <div class="form-group">
             <h4>Texto:</h4>                    
-            <textarea name="noiva_desc" id="noivo_desc" class="form-control"><?= ($infos['noivo_desc']) ?></textarea>
+            <textarea name="noivo_desc" id="noivo_desc" class="form-control"><?= ($infos['noivo_desc']) ?></textarea>
         </div>
     </div>
 </div>
+                </div>
 
-              </div>
-            </div>
-          </div>
-                  <div class="row">
+        <div class="row">
           <div class="center-block text-center">
             <input type="submit" class="btn btn-success btn-lg margin-bottom margin" value="Alterar">
           </div>
         </div>
+
+              </div>
+            </div>
+         
         </div>
 
         <!-- /.row -->
@@ -123,6 +126,7 @@ $infos = listaMeusite($conexao);
     </div>
 </div>
 
+
 <?php
 require_once 'footer.php';
 ?>
@@ -145,6 +149,7 @@ $("#imgLocalInput").change(function() {
 readURL(this);
 });
 </script>
+
 
 <!-- Active Menu -->
 <script>
@@ -174,3 +179,4 @@ document.addEventListener("DOMContentLoaded", function() {
    adjustHeight();
 });
 </script>
+
